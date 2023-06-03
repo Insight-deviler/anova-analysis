@@ -94,3 +94,19 @@ def RBD(replication, treatment, input_file_path, output_file_name):
         file.write(tabulate(table_df, headers='keys', tablefmt='fancy_grid'))
 
     print(f"Result saved in {output_file_name}_result.txt")
+
+    result = {
+        "correction_factor": round(correctionFactor, 2),
+        "total_sum_of_square": round(totalsum, 2),
+        "replication_sum_of_square": round(replicationSum, 2),
+        "treatment_sum_of_square": round(treatmentSum, 2),
+        "error_sum_of_square": round(Error_sum_square, 2),
+        "replication_df": rep,
+        "treatment_df": tre,
+        "errors_df": error_df,
+        "rep_mean_ss":round(rep_mss, 2),
+        "tre_mean_ss": round(tre_mss, 2),
+        "error_mean_ss":round(error_mss, 2)
+    }
+    # Return the result
+    return result
