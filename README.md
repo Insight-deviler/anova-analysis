@@ -1,7 +1,10 @@
 # ANOVA Analysis Package
 
-The ANOVA Analysis Package is a Python package that provides functions for performing ``Two-Way ANOVA (Analysis of Variance) analysis`` on experimental data.
-Currently it can perform RBD analysis only
+The ANOVA Analysis Package is a Python package that provides functions for performing ``Two-Way ANOVA (Analysis of Variance)`` on experimental data.
+
+Currently it can perform RBD analysis only. 
+
+Read the [Disclaimer](#disclaimer) before use 
 
 ## Installation
 
@@ -12,20 +15,36 @@ pip install anova_analysis
 ## Usage
 
 - If you just want the output as a file:
-```
-from anova_analysis import ANOVA_RBD
 
- #Set the replication, treatment, input_file path and output_file_name
+1. When you have only one character to analyse:
+                
+        from anova_analysis import ANOVA_RBD
 
-replication = 4
-treatment = 23
-input_file_path = "data/MODEL_DATA.xlsx"
-output_file_name = "test"
+        #Set the replication, treatment, input_file path and output_file_name
 
- #Perform ANOVA analysis
+        replication = 4
+        treatment = 23
+        input_file_path = "data/MODEL_DATA.xlsx"
+        output_file_name = "test"
 
-ANOVA_RBD.RBD(replication, treatment, input_file_path, output_file_name )
-```
+        #Perform ANOVA analysis
+
+        ANOVA_RBD.RBD(replication, treatment, input_file_path, output_file_name )
+
+2. When you have a folder with individual characters in separate excel files:
+
+        from anova_analysis import ANOVA_RBD
+        import os
+
+        folder_path = r'C:/Users/PlantReading/data/'
+
+        # listing files in the folder_path 
+        for file in os.listdir(folder_path):
+                if file.endswith('.xlsx') or file.endswith('.xls'):
+                        file_path = os.path.join(folder_path, file)
+                        print(f"processing file: {file}")
+                        ANOVA_RBD.RBD(rep,treat,file_path,os.path.basename(file))
+                                
 - If you want the output to be used in for further analysis, 
 you can then access the calculated values from the ``result`` dictionary:
 ```
@@ -59,15 +78,27 @@ EMSS = result["error_mean_ss"]
 ## Example Dataset
 
 - The package requires an Excel file containing the experimental data. The data should be arranged in a Randomized Block Design (RBD) format, with treatments (genotypes) in columns and replications in rows. 
-- Please ensure that the excel file is in same format as it is given in this [repo](data/MODEL_DATA.xlsx) or below
+- Please ensure that the excel file is in same format as it is given in this [repo](data/MODEL_DATA.xlsx) or below in separate excel file using the code from [here](https://github.com/Insight-deviler/Folder-based-Character-Column-Transformation)
+        
+        1. Days to Maturity.xlsx:
 
-                | Genotypes | R1    | R2     | R3     | R4     |
-                |-----------|-------|--------|--------|--------|
-                | 1x6       | 74.4  | 70.86  | 60.94  | 68     |
-                | 1x7       | 91.82 | 99.18  | 118.88 | 120.68 |
-                | 1x8       | 48.08 | 62.1   | 58.54  | 41.84  |
-                | 2x6       | 59.06 | 65.62  | 81.62  | 86.76  |
-                | 2x7       | 84.16 | 109.74 | 102.14 | 94.52  |
+                | GENOTYPE  | R1    | R2     | R3     | 
+                |-----------|-------|--------|--------|
+                | G1        | 74.4  | 70.86  | 60.94  |
+                | G2        | 91.82 | 99.18  | 118.88 |
+                | G3        | 48.08 | 62.1   | 58.54  |
+                | G4        | 59.06 | 65.62  | 81.62  |
+                | G5        | 84.16 | 109.74 | 102.14 |
+
+        2. PLANT HEIGHT (cm).xlsx:
+
+                | GENOTYPE  | R1    | R2     | R3     | 
+                |-----------|-------|--------|--------|
+                | G1        | 74.4  | 70.86  | 60.94  |
+                | G2        | 91.82 | 99.18  | 118.88 |
+                | G3        | 48.08 | 62.1   | 58.54  |
+                | G4        | 59.06 | 65.62  | 81.62  |
+                | G5        | 84.16 | 109.74 | 102.14 |
 
 - If you have data in the below format, transform it to above said model (individual character) by using this [code](https://github.com/Insight-deviler/Folder-based-Character-Column-Transformation)
 
@@ -80,7 +111,7 @@ EMSS = result["error_mean_ss"]
         | G2       | R2          | 6                | 7.5               |
 
 ## License
-This package is licensed under the MIT License. See the [LICENSE](https://github.com/Insight-deviler/anova-analysis/blob/main/LICENSE.txt) file for more information.
+This package is licensed under the MIT License. See the [LICENSE](https://github.com/Insight-deviler/anova-analysis/blob/main/LICENSE) file for more information.
 
 ## Contributing
 Contributions are welcome! If you have any suggestions, bug reports, or feature requests, please open an issue or submit a pull request on the GitHub repository.
@@ -92,5 +123,20 @@ Contributions are welcome! If you have any suggestions, bug reports, or feature 
 ## Acknowledgements
 
 - This package was developed as part of a research work. 
-- This is based on ```Biometrical Methods in Quantitative Genetic Analysis by R.K. Singh and B.D. Chaudhary```
+- This is based on `Biometrical Methods in Quantitative Genetic Analysis by R.K. Singh and B.D. Chaudhary`
 - I would like to thank all contributors and supporters.
+
+## Disclaimer
+
+The `anova_analysis` package provided in this repository is offered "as is" without any warranty or guarantee of its functionality, performance, or suitability for any specific purpose. The author(s) and contributors of this package shall not be held liable for any direct, indirect, incidental, consequential, or other damages or losses resulting from the use of this package.
+
+The user assumes all responsibility and risk associated with the installation, configuration, and usage of this package. It is strongly recommended to thoroughly test the package in a controlled environment before using it in production or critical systems. 
+
+The author and contributors cannot be held responsible for any loss of data, system failures, or any other damages or issues caused by the use or misuse of this package. 
+
+It is the user's responsibility to ensure the compatibility of this package with their specific environment, including the software versions, hardware, and other dependencies. Any modifications or customizations made to this package are solely the user's responsibility, and the author or contributors shall not be responsible for any resulting issues.
+
+By using this package, you agree to the terms and conditions stated in this disclaimer. If you do not agree with these terms, you should not install, configure, or use this package.
+
+Please exercise caution and make informed decisions when using this package. It is always recommended to have proper backups and contingency plans in place to mitigate any potential risks.
+
