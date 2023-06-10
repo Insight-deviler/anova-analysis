@@ -1,9 +1,9 @@
 import pandas as pd
 from tabulate import tabulate
 import scipy.stats as stats
+import os
 
-
-def RBD(replication, treatment, input_file_path, output_file_name):
+def RBD(replication, treatment, input_file_path):
     
     # Import the dataset
     df = pd.read_excel(input_file_path)
@@ -56,10 +56,10 @@ def RBD(replication, treatment, input_file_path, output_file_name):
     p_value_column_1 = stats.f.ppf(1-significance_level_1, tre, error_df)
  
     # Determine Significance
-    row_significance = "Significant" if p_value_row_5 < f_value_row else "Not Significant"
-    column_significance = "Significant" if p_value_column_5 < f_value_column else "Not Significant"
-    row_significance_1 = "Significant" if p_value_row_1 < f_value_row else "Not Significant"
-    column_significance_1 = "Significant" if p_value_column_1 < f_value_column else "Not Significant"
+    row_significance = "*" if p_value_row_5 < f_value_row else ""
+    column_significance = "*" if p_value_column_5 < f_value_column else ""
+    row_significance_1 = "**" if p_value_row_1 < f_value_row else ""
+    column_significance_1 = "**" if p_value_column_1 < f_value_column else ""
 
 
     data = {
@@ -71,8 +71,8 @@ def RBD(replication, treatment, input_file_path, output_file_name):
         "F-ratio": [round(rep_mss / error_mss, 2), round(tre_mss / error_mss, 2), "", ""],
         "p-value (5%)": [round(p_value_row_5,3), round(p_value_column_5,3),'',''],
         "p-value (1%)": [round(p_value_row_1,3), round(p_value_column_1,3),'',''],
-        "Significance (at 5%)": [row_significance, column_significance, "", ""],
-        "Significance (at 1%)": [row_significance_1, column_significance_1, "", ""]
+        "Sig. (at 5%)": [row_significance, column_significance, "", ""],
+        "Sig. (at 1%)": [row_significance_1, column_significance_1, "", ""]
     
     }
 
@@ -83,17 +83,24 @@ def RBD(replication, treatment, input_file_path, output_file_name):
     print(table_df)
 
     # Save the results in a text file
-    with open(f'{output_file_name}_result.txt', 'w', encoding='utf-8') as file:
+    directory_path = os.path.dirname(input_file_path)
+    output_file_name = os.path.splitext(os.path.basename(input_file_path))[0]
+    output_file_path = os.path.join(directory_path, f"{output_file_name}_result.txt")
+   
+    # Save the results in a text file
+    with open(output_file_path, 'w', encoding='utf-8') as file:
         file.write(f"{output_file_name}: ")
-        file.write("\n")
+        file.write("\n\n")
         file.write("Correction Factor: {:.2f}\n".format(correctionFactor))
         file.write("Total Sum of Square: {:.2f}\n".format(totalsum))
         file.write("Replication Sum of Square: {:.2f}\n".format(replicationSum))
         file.write("Treatment Sum of Square: {:.2f}\n".format(treatmentSum))
         file.write("Error Sum of Square: {:.2f}\n\n".format(Error_sum_square))
-        file.write(tabulate(table_df, headers='keys', tablefmt='fancy_grid'))
+        file.write(tabulate(table_df, headers='keys', tablefmt='grid'))
+        file.write("\n\n")
+        file.write("*  - Significance at 5% level\n** - Significance at 1% level")
 
-    print(f"Result saved in {output_file_name}_result.txt")
+    print(f"Result saved in {output_file_path}")
 
     result = {
         "correction_factor": round(correctionFactor, 2),

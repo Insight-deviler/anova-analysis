@@ -5,9 +5,8 @@ treat = 23
 
 # If you have a single excel sheet for single character
 file = "data/MODEL_DATA.xlsx"
-output = 'MODEL_DATA'
 
-result = ANOVA_RBD.RBD(rep, treat, file, output)
+result = ANOVA_RBD.RBD(rep, treat, file)
 
 CF = result["correction_factor"]
 TSS = result["total_sum_of_square"]
@@ -44,4 +43,4 @@ for file in os.listdir(folder_path):
       # Where: 
       #   rep is replication,
       #   treat is genotypes,  os.path.basename(file) for getting file name
-        ANOVA_RBD.RBD(rep,treat,file_path,os.path.basename(file))
+        ANOVA_RBD.RBD(rep,treat,file_path)

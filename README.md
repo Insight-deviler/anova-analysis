@@ -20,16 +20,15 @@ pip install anova_analysis
                 
         from anova_analysis import ANOVA_RBD
 
-        #Set the replication, treatment, input_file path and output_file_name
+        #Set the replication, treatment, input file path
 
         replication = 4
         treatment = 23
         input_file_path = "data/MODEL_DATA.xlsx"
-        output_file_name = "test"
 
         #Perform ANOVA analysis
 
-        ANOVA_RBD.RBD(replication, treatment, input_file_path, output_file_name )
+        ANOVA_RBD.RBD(replication, treatment, input_file_path)
 
 2. When you have a folder with individual characters in separate excel files:
 
@@ -39,18 +38,19 @@ pip install anova_analysis
         folder_path = r'C:/Users/PlantReading/data/'
 
         # listing files in the folder_path 
+
         for file in os.listdir(folder_path):
                 if file.endswith('.xlsx') or file.endswith('.xls'):
                         file_path = os.path.join(folder_path, file)
                         print(f"processing file: {file}")
-                        ANOVA_RBD.RBD(rep,treat,file_path,os.path.basename(file))
+                        ANOVA_RBD.RBD(rep,treat,file_path)
                                 
 - If you want the output to be used in for further analysis, 
 you can then access the calculated values from the ``result`` dictionary:
 ```
-result = ANOVA_RBD.RBD(replication, treatment, input_file_path, output_file_name)
+result = ANOVA_RBD.RBD(replication, treatment, input_file_path)
 ```
-- To access the ``result`` use the following
+- To access the ``result`` use the following in other code or for further analysis
 ```
 CF = result["correction_factor"]
 TSS = result["total_sum_of_square"]
@@ -70,8 +70,8 @@ EMSS = result["error_mean_ss"]
 
 ## Features
 
-- Calculates the correction factor, total sum of squares, replication sum of squares, treatment sum of squares, and error sum of squares.
-- Generates an ANOVA table with the source, degrees of freedom, sum of squares, mean square, F-values, and p-values at the 5% and 1% significance levels.
+- Calculates the `correction factor, total sum of squares, replication sum of squares, treatment sum of squares, and error sum of squares`.
+- Generates an ANOVA table with the `source, degrees of freedom, sum of squares, mean square, F-values, and p-values at the 5% and 1% significance levels`.
 - Performs significance testing at the 5% and 1% levels to determine the statistical significance of the factors.
 - Saves the ANOVA results in a text file for further analysis or reporting purposes.
 
@@ -139,4 +139,3 @@ It is the user's responsibility to ensure the compatibility of this package with
 By using this package, you agree to the terms and conditions stated in this disclaimer. If you do not agree with these terms, you should not install, configure, or use this package.
 
 Please exercise caution and make informed decisions when using this package. It is always recommended to have proper backups and contingency plans in place to mitigate any potential risks.
-
