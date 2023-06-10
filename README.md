@@ -62,8 +62,11 @@ Tdf = result["treatment_df"],
 Edf = result["errors_df"],
 RMSS = result["rep_mean_ss"],
 TMSS = result["tre_mean_ss"],
-EMSS = result["error_mean_ss"]
-
+EMSS = result["error_mean_ss"],
+TDF = result["total_df"],
+ToSS = result["total_ss"],
+tableDF = result["global_dataframe"]
+        
 # Where CF, TSS,.. are variables
 ```
 -  You can easily access them in your other Python file and use them as needed. Modify the returned data structure to suit your preferences and the specific values you want to access.
