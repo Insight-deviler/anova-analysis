@@ -12,26 +12,21 @@ def RBD(replication, treatment, input_file_path):
     data_subset = df.iloc[:, 1:]
     total_sum = data_subset.values.sum()
     correctionFactor = (total_sum ** 2) / (replication * treatment)
-    print("Correction Factor:", round(correctionFactor, 2))
-
+    
     # Total Sum of Square
     total_sum_squared = (data_subset ** 2).values.sum()
     totalsum = total_sum_squared - correctionFactor
-    print("Total Sum of Square:", round(totalsum, 2))
-
+    
     # Replication Sum of Square
     column_sums = df.iloc[:, 1:].sum()
     replicationSum = ((column_sums ** 2).sum() / treatment) - correctionFactor
-    print("Replication Sum of Square:", round(replicationSum, 2))
-
+    
     # Treatment Sum of Square
     row_sum = df.iloc[:, 1:].sum(axis=1)
     treatmentSum = ((row_sum ** 2).sum() / replication) - correctionFactor
-    print("Treatment Sum of Square:", round(treatmentSum, 2))
-
+    
     # Error Sum of Square
     Error_sum_square = totalsum - replicationSum - treatmentSum
-    print("Error Sum of Square:", round(Error_sum_square, 2))
 
     # Anova table
     rep = replication - 1
@@ -73,7 +68,6 @@ def RBD(replication, treatment, input_file_path):
         "p-value (1%)": [round(p_value_row_1,3), round(p_value_column_1,3),'',''],
         "Sig. (at 5%)": [row_significance, column_significance, "", ""],
         "Sig. (at 1%)": [row_significance_1, column_significance_1, "", ""]
-    
     }
 
     # Create the DataFrame for the table
@@ -103,6 +97,7 @@ def RBD(replication, treatment, input_file_path):
     print(f"Result saved in {output_file_path}")
 
     result = {
+        "global_dataframe" : table_df,
         "correction_factor": round(correctionFactor, 2),
         "total_sum_of_square": round(totalsum, 2),
         "replication_sum_of_square": round(replicationSum, 2),
