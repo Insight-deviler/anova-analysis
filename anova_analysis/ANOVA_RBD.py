@@ -113,7 +113,10 @@ def RBD(replication, treatment, input_file_path):
         "errors_df": error_df,
         "rep_mean_ss":round(rep_mss, 2),
         "tre_mean_ss": round(tre_mss, 2),
-        "error_mean_ss":round(error_mss, 2)
+        "error_mean_ss":round(error_mss, 2),
+        "total_df": total_source,
+        "total_ss": round(total_ss_sum, 2)
+
     }
     # Return the result
     return result
