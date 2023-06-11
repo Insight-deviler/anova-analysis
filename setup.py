@@ -6,7 +6,7 @@ with open("README.md", "r", encoding="utf-8") as fh:
 # Setting up
 setup(
         name="anova_analysis", 
-        version="1.0.4",
+        version="1.0.5",
         authors=['Sarath S','Saranyadevi S'],
         author_email="insightagri10@gmail.com",
         description="A package for performing ANOVA analysis by RBD",
