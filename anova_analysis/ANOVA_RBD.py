@@ -3,7 +3,7 @@ from tabulate import tabulate
 import scipy.stats as stats
 import os
 
-def RBD(replication, treatment, input_file_path):
+def RBD(replication, treatment, input_file_path,save_file=None):
     
     # Import the dataset
     df = pd.read_excel(input_file_path)
@@ -76,25 +76,27 @@ def RBD(replication, treatment, input_file_path):
     # Print the table
     print(table_df)
 
-    # Save the results in a text file
-    directory_path = os.path.dirname(input_file_path)
-    output_file_name = os.path.splitext(os.path.basename(input_file_path))[0]
-    output_file_path = os.path.join(directory_path, f"{output_file_name}_result.txt")
-   
-    # Save the results in a text file
-    with open(output_file_path, 'w', encoding='utf-8') as file:
-        file.write(f"{output_file_name}: ")
-        file.write("\n\n")
-        file.write("Correction Factor: {:.2f}\n".format(correctionFactor))
-        file.write("Total Sum of Square: {:.2f}\n".format(totalsum))
-        file.write("Replication Sum of Square: {:.2f}\n".format(replicationSum))
-        file.write("Treatment Sum of Square: {:.2f}\n".format(treatmentSum))
-        file.write("Error Sum of Square: {:.2f}\n\n".format(Error_sum_square))
-        file.write(tabulate(table_df, headers='keys', tablefmt='grid'))
-        file.write("\n\n")
-        file.write("*  - Significance at 5% level\n** - Significance at 1% level")
+    if save_file is None or save_file:
 
-    print(f"Result saved in {output_file_path}")
+            # Save the results in a text file
+            directory_path = os.path.dirname(input_file_path)
+            output_file_name = os.path.splitext(os.path.basename(input_file_path))[0]
+            output_file_path = os.path.join(directory_path, f"{output_file_name}_result.txt")
+        
+            # Save the results in a text file
+            with open(output_file_path, 'w', encoding='utf-8') as file:
+                file.write(f"{output_file_name}: ")
+                file.write("\n\n")
+                file.write("Correction Factor: {:.2f}\n".format(correctionFactor))
+                file.write("Total Sum of Square: {:.2f}\n".format(totalsum))
+                file.write("Replication Sum of Square: {:.2f}\n".format(replicationSum))
+                file.write("Treatment Sum of Square: {:.2f}\n".format(treatmentSum))
+                file.write("Error Sum of Square: {:.2f}\n\n".format(Error_sum_square))
+                file.write(tabulate(table_df, headers='keys', tablefmt='grid'))
+                file.write("\n\n")
+                file.write("*  - Significance at 5% level\n** - Significance at 1% level")
+
+            print(f"Result saved in {output_file_path}")
 
     result = {
         "global_dataframe" : table_df,

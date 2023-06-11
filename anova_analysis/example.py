@@ -6,7 +6,7 @@ treat = 23
 # If you have a single excel sheet for single character
 file = "data/MODEL_DATA.xlsx"
 
-result = ANOVA_RBD.RBD(rep, treat, file)
+result = ANOVA_RBD.RBD(rep, treat, file, False)
 
 CF = result["correction_factor"]
 TSS = result["total_sum_of_square"]
@@ -20,7 +20,7 @@ RMSS = result["rep_mean_ss"],
 TMSS = result["tre_mean_ss"],
 EMSS = result["error_mean_ss"]
 
-print("")
+print(CF)
 
 # If you have multiple characters in separate excel sheet
 # See this GitHub page for further details "https://github.com/Insight-deviler/Folder-based-Character-Column-Transformation/tree/main"
@@ -43,4 +43,4 @@ for file in os.listdir(folder_path):
       # Where: 
       #   rep is replication,
       #   treat is genotypes,  os.path.basename(file) for getting file name
-        ANOVA_RBD.RBD(rep,treat,file_path)
+        ANOVA_RBD.RBD(rep,treat,file_path,False)
