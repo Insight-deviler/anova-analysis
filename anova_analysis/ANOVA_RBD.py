@@ -51,10 +51,10 @@ def RBD(replication, treatment, input_file_path,save_file=None):
     p_value_column_1 = stats.f.ppf(1-significance_level_1, tre, error_df)
  
     # Determine Significance
-    row_significance = "*" if p_value_row_5 < f_value_row else ""
-    column_significance = "*" if p_value_column_5 < f_value_column else ""
-    row_significance_1 = "**" if p_value_row_1 < f_value_row else ""
-    column_significance_1 = "**" if p_value_column_1 < f_value_column else ""
+    row_significance = "Sig" if p_value_row_5 < f_value_row else "Not Sig"
+    column_significance = "Sig" if p_value_column_5 < f_value_column else "Not Sig"
+    row_significance_1 = "Sig" if p_value_row_1 < f_value_row else "Not Sig"
+    column_significance_1 = "Sig" if p_value_column_1 < f_value_column else "Not Sig"
 
 
     data = {
@@ -93,8 +93,6 @@ def RBD(replication, treatment, input_file_path,save_file=None):
                 file.write("Treatment Sum of Square: {:.2f}\n".format(treatmentSum))
                 file.write("Error Sum of Square: {:.2f}\n\n".format(Error_sum_square))
                 file.write(tabulate(table_df, headers='keys', tablefmt='grid'))
-                file.write("\n\n")
-                file.write("*  - Significance at 5% level\n** - Significance at 1% level")
 
             print(f"Result saved in {output_file_path}")
 

@@ -15,21 +15,20 @@ You can install the package using pip:
 ## Usage
 
 1. When you have only one character to analyse:
-                
+
+      ```python          
         from anova_analysis import ANOVA_RBD
 
         #Set the replication, treatment, input file path
-
         replication = 4
         treatment = 23
         input_file_path = "data/MODEL_DATA.xlsx"
 
         #Perform ANOVA analysis
-
         ANOVA_RBD.RBD(replication, treatment, input_file_path)
-
 2. When you have a folder with individual characters in separate excel files:
 
+     ```python
         from anova_analysis import ANOVA_RBD
         import os
 
@@ -41,24 +40,24 @@ You can install the package using pip:
                         file_path = os.path.join(folder_path, file)
                         print(f"processing file: {file}")
                         ANOVA_RBD.RBD(rep,treat,file_path)
-
 3. The `RBD()` function accepts an optional parameter called `save_file`, which determines whether the result file need to be saved or not. By default, the parameter is set to `True`, enabling the default operation.
 
 4. To use the function, follow these steps:
-       
+    
+     ```python  
         # default, will save the result
         ANOVA_RBD.RBD(replication, treatment, input_file_path) 
 
         # Will not save the result
         ANOVA_RBD.RBD(replication, treatment, input_file_path, False) 
-
 - If you want the output to be used in for further analysis, 
 you can then access the calculated values from the ``result`` dictionary:
-
+     
+     ```python
         result = ANOVA_RBD.RBD(replication, treatment, input_file_path)
-
 - To access the ``result`` use the following in other code or for further analysis
-
+     
+     ```python
         CF = result["correction_factor"]
         TSS = result["total_sum_of_square"]
         RSS = result["replication_sum_of_square"]
@@ -74,8 +73,7 @@ you can then access the calculated values from the ``result`` dictionary:
         ToSS = result["total_ss"],
         tableDF = result["global_dataframe"]
                 
-        # Where CF, TSS,.. are variables
-        
+        # Where CF, TSS,.. are variables 
 -  You can easily access them in your other Python file and use them as needed. Modify the returned data structure to suit your preferences and the specific values you want to access.
 
 ## Features
@@ -132,7 +130,7 @@ Contributions are welcome! If you have any suggestions, bug reports, or feature 
 
 ## Acknowledgements
 
-- This package was developed as part of a research work. 
+- This package was developed as part of research work. 
 - This is based on `Biometrical Methods in Quantitative Genetic Analysis by R.K. Singh and B.D. Chaudhary`
 - I would like to thank all contributors and supporters.
 
