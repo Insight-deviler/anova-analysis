@@ -57,7 +57,7 @@ def RBD(replication, treatment, input_file_path,save_file=None):
     column_significance_1 = "Sig" if p_value_column_1 < f_value_column else "Not Sig"
 
 
-    data = {
+    anova_data = {
         "Source": ["Replication", "Treatment", "Error", "Total"],
         "d.f": [rep, tre, error_df, total_source],
         "s.s": [round(replicationSum, 2), round(treatmentSum, 2), round(Error_sum_square, 2),
@@ -71,10 +71,7 @@ def RBD(replication, treatment, input_file_path,save_file=None):
     }
 
     # Create the DataFrame for the table
-    table_df = pd.DataFrame(data)
-
-    # Print the table
-    print(table_df)
+    # table_df = pd.DataFrame(anova_data)
 
     if save_file is None or save_file:
 
@@ -92,12 +89,12 @@ def RBD(replication, treatment, input_file_path,save_file=None):
                 file.write("Replication Sum of Square: {:.2f}\n".format(replicationSum))
                 file.write("Treatment Sum of Square: {:.2f}\n".format(treatmentSum))
                 file.write("Error Sum of Square: {:.2f}\n\n".format(Error_sum_square))
-                file.write(tabulate(table_df, headers='keys', tablefmt='grid'))
+                file.write(tabulate(anova_data, headers='keys', tablefmt='grid'))
 
             print(f"Result saved in {output_file_path}")
 
     result = {
-        "global_dataframe" : table_df,
+        "global_dataframe" : anova_data,
         "correction_factor": round(correctionFactor, 2),
         "total_sum_of_square": round(totalsum, 2),
         "replication_sum_of_square": round(replicationSum, 2),
