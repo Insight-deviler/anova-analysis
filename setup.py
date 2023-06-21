@@ -7,7 +7,7 @@ with open("README.md", "r", encoding="utf-8") as fh:
 setup(
         name="anova_analysis", 
         version="1.0.5",
-        authors=['Sarath S','Saranyadevi S'],
+        author='Sarath S',
         author_email="insightagri10@gmail.com",
         description="A package for performing ANOVA analysis by RBD",
         license='MIT',
@@ -16,7 +16,7 @@ setup(
         packages=find_packages(),
         url="https://github.com/Insight-deviler/anova_analysis",
         install_requires=["tabulate", "pandas", "scipy",'numpy'],
-        keywords=['line x tester','lxt','Line x Tester','Line Tester', 'Genetics and Plant breeding','Quantitative Genetics', 'ANOVA', 'Two-way ANOVA', 'RBD', 'analysis of variance'],
+        keywords=['Genetics and Plant breeding','Quantitative Genetics', 'ANOVA', 'Two-way ANOVA', 'RBD', 'analysis of variance'],
         classifiers= [
              "Programming Language :: Python :: 3",
              "License :: OSI Approved :: MIT License",
