@@ -124,9 +124,8 @@ This package is licensed under the MIT License. See the [LICENSE](https://github
 ## Contributing
 Contributions are welcome! If you have any suggestions, bug reports, or feature requests, please open an issue or submit a pull request on the GitHub repository.
 
-## Authors
+## Author
 - Sarath S (insightagri10@gmail.com)
-- Saranyadevi S
 
 ## Acknowledgements
 
