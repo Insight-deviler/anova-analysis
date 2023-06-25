@@ -126,7 +126,7 @@ Contributions are welcome! If you have any suggestions, bug reports, or feature 
 
 ## Author
 - Sarath S (insightagri10@gmail.com)
-
+- Saranyadevi S
 ## Acknowledgements
 
 - This package was developed as part of research work. 
