@@ -14,7 +14,6 @@ setup(
         long_description=LONG_DESCRIPTION,
         long_description_content_type="text/markdown",
         packages=['ANOVA_RBD', 'ANOVA_CRD'],
-        package_dir={'': 'src'},
         url="https://github.com/Insight-deviler/anova_analysis",
         install_requires=["tabulate", "pandas", "scipy",'numpy','warnings'],
         keywords=['Genetics and Plant breeding','Quantitative Genetics', 'ANOVA', 'Two-way ANOVA', 'RBD', 'CRD', 'One-Way ANOVA', 'analysis of variance'],
