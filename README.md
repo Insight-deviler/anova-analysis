@@ -12,6 +12,10 @@ See the usage of the packages:
 1. [RBD](https://github.com/Insight-deviler/anova-analysis/blob/main/anova_analysis/ANOVA_RBD/ReadMe.md)
 2. [CRD](https://github.com/Insight-deviler/anova-analysis/blob/main/anova_analysis/ANOVA_CRD/ReadMe.md)
 
+## Issues
+
+Found a bug? create an [issue](https://github.com/Insight-deviler/anova-analysis/issues/new) in our github repo
+
 ## License
 This package is licensed under the MIT License. See the [LICENSE](https://github.com/Insight-deviler/anova-analysis/blob/main/LICENSE) file for more information.
 
@@ -25,7 +29,6 @@ Contributions are welcome! If you have any suggestions, bug reports, or feature 
 ## Acknowledgements
 
 - This package was developed as part of research work. 
-- This is based on `Biometrical Methods in Quantitative Genetic Analysis by R.K. Singh and B.D. Chaudhary`
 - I would like to thank all contributors and supporters.
 
 ## Disclaimer
