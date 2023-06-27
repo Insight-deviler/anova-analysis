@@ -9,8 +9,8 @@ Read the [Disclaimer](#disclaimer) before use
 ## Package subsets
 
 See the usage of the packages:
-1. [RBD](https://github.com/Insight-deviler/anova-analysis/anova_analysis/ANOVA_RBD/ReadMe.md)
-2. [CRD](https://github.com/Insight-deviler/anova-analysis/anova_analysis/ANOVA_CRD/ReadMe.md)
+1. [RBD](https://github.com/Insight-deviler/anova-analysis/blob/main/anova_analysis/ANOVA_RBD/ReadMe.md)
+2. [CRD](https://github.com/Insight-deviler/anova-analysis/blob/main/anova_analysis/ANOVA_CRD/ReadMe.md)
 
 ## License
 This package is licensed under the MIT License. See the [LICENSE](https://github.com/Insight-deviler/anova-analysis/blob/main/LICENSE) file for more information.
