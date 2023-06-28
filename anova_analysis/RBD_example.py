@@ -1,4 +1,4 @@
-from anova_analysis import ANOVA_RBD
+from anova_analysis import RBD
 
 rep = 4
 treat = 23
@@ -6,7 +6,7 @@ treat = 23
 # If you have a single excel sheet for single character
 file = "data/MODEL_DATA.xlsx"
 
-result = ANOVA_RBD.RBD(rep, treat, file, False)
+result = RBD.RBD(rep, treat, file, False)
 
 CF = result["correction_factor"]
 TSS = result["total_sum_of_square"]
@@ -25,7 +25,7 @@ print(CF)
 # If you have multiple characters in separate excel sheet
 # See this GitHub page for further details "https://github.com/Insight-deviler/Folder-based-Character-Column-Transformation/tree/main"
 
-from anova_analysis import ANOVA_RBD
+from anova_analysis import RBD
 import os
 
 folder_path = r'C:/Users/PlantReading/data/'
@@ -43,4 +43,4 @@ for file in os.listdir(folder_path):
       # Where: 
       #   rep is replication,
       #   treat is genotypes,  os.path.basename(file) for getting file name
-        ANOVA_RBD.RBD(rep,treat,file_path,False)
+        RBD.RBD(rep,treat,file_path,False)

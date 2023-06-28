@@ -13,7 +13,7 @@ setup(
         license='MIT',
         long_description=LONG_DESCRIPTION,
         long_description_content_type="text/markdown",
-        packages=find_packages(['anova_analysis.*']),
+        packages=find_packages(),
         url="https://github.com/Insight-deviler/anova_analysis",
         install_requires=["tabulate", "pandas", "scipy",'numpy','warnings'],
         keywords=['Genetics and Plant breeding','Quantitative Genetics', 'ANOVA', 'Two-way ANOVA', 'RBD', 'CRD', 'One-Way ANOVA', 'analysis of variance'],

@@ -17,7 +17,7 @@ pip install anova_analysis
 1. When you have only one character to analyse:
 
       ```python          
-        from anova_analysis import ANOVA_RBD
+        from anova_analysis import RBD
 
         #Set the replication, treatment, input file path
         replication = 4
@@ -25,12 +25,12 @@ pip install anova_analysis
         input_file_path = "data/MODEL_DATA.xlsx"
 
         #Perform ANOVA analysis
-        ANOVA_RBD.RBD(replication, treatment, input_file_path)
+        RBD.RBD(replication, treatment, input_file_path)
 
 2. When you have a folder with individual characters in separate excel files:
 
      ```python
-        from anova_analysis import ANOVA_RBD
+        from anova_analysis import RBD
         import os
 
         folder_path = r'C:/Users/PlantReading/data/'
@@ -48,15 +48,15 @@ pip install anova_analysis
     
      ```python  
         # default, will save the result
-        ANOVA_RBD.RBD(replication, treatment, input_file_path) 
+        RBD.RBD(replication, treatment, input_file_path) 
 
         # Will not save the result
-        ANOVA_RBD.RBD(replication, treatment, input_file_path, False) 
+        RBD.RBD(replication, treatment, input_file_path, False) 
 - If you want the output to be used in for further analysis, 
 you can then access the calculated values from the ``result`` dictionary:
      
      ```python
-    result = ANOVA_RBD.RBD(replication, treatment, input_file_path)
+    result = RBD.RBD(replication, treatment, input_file_path)
     ```
 - To access the ``result`` use the following in other code or for further analysis
      
